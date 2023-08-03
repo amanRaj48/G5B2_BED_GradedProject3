@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+		integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<link rel="stylesheet" th:href="@{/fontawesome/all.css}" /> 
+    <link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+
+	<title>Tickets</title>
+</head>
+
+<body>
+	<!--<br class="container"> -->
+	<div class="col-md-12" style="background-color:cornflowerblue;  display: inline-block;">
+		<div class="row">
+
+			<h2 text-align: left; style="color: aliceblue;">Ticket Tracker Application</h2>
+
+
+			<ul class="nav nav-tabs justify-content-begining">
+				<li class="nav-item">
+					<a class="nav-link" href="/admin/tickets" style="color: aliceblue;">Tickets</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/admin/tickets/newTicket" style="color: aliceblue;">New Ticket</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+	<div class="container">
+
+		<hr>
+		<p class="h4 mb-4">Create Ticket</p>
+		<form action="#" th:action="@{/admin/tickets/save}" th:object="${ticket}" method="POST">
+
+			<!-- Add hidden form field to handle update -->
+			<div>
+				<input type="hidden" th:field="*{id}" />
+				<label for="title">Title</label>
+				<input type="text" th:field="*{title}" class="form-control mb-4 col-6">
+				<label for="description">Short Description</label>
+				<textarea rows="4" cols="50" type="text" th:field="*{description}"
+					class="form-control mb-4 col-6"></textarea>
+				<div class="form-group">
+					<label for="content">Content</label>
+					<textarea id="content" rows="4" cols="50" type="text" th:field="*{content}"
+						class="form-control mb-4 col-6"></textarea>
+				</div>
+
+				<button type="submit" class="btn btn-info col-2">Save</button>
+
+		</form>
+
+		<hr>
+		<a th:href="@{/admin/tickets}">Back to tickets</a>
+	</div>
+
+	<script>
+		$(document).ready(function () {
+			$("#content").richText();
+		});
+	</script>
+
+
+	</div>
+</body>
+
+</html>

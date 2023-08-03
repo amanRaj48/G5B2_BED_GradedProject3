@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+		integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Ticket Details</title>
+</head>
+
+<body>
+	<!--<br class="container">-->
+	<div class="col-md-12" style="background-color:cornflowerblue;  display: inline-block;">
+		<div class="row">
+
+			<h2 text-align: left; style="color: aliceblue;">Ticket Tracker Application</h2>
+
+
+			<ul class="nav nav-tabs justify-content-begining">
+				<li class="nav-item">
+					<a class="nav-link" href="/admin/tickets" style="color: aliceblue;">Tickets</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/admin/tickets/newTicket" style="color: aliceblue;">New Ticket</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+	<br class="container">
+	<div>
+		<h3>Ticket Details</h3>
+	</div>
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>#</th>
+				<th>Ticket Title</th>
+				<th>Ticket Short Description</th>
+				<th>Ticket Created on</th>
+				<!--	<th>Content</th> -->
+			</tr>
+		</thead>
+		<tbody>
+			<!-- For loop in thymeleaf-->
+			<tr>
+				<td th:text="${ticket.id}"></td>
+				<td th:text="${ticket.title}"></td>
+				<td th:text="${ticket.description}"></td>
+				<td th:text="${ticket.date}"></td>
+				<!--	<td th:text="${ticket.content}"></td> -->
+
+			</tr>
+
+		</tbody>
+	</table>
+	<div>
+		<br class="container">
+		<h4>Content</h4>
+		<p style="border: 1px solid lightgray;background-color: ghostwhite; font-size: 20px; padding: 10px;margin: 10px;"
+			th:text="${ticket.content}"></p>
+	</div>
+	<div class="row">
+
+		<div class="col-small">
+
+			<form action="#" th:action="@{/admin/tickets}" method="GET">
+				<button type="submit" class="btn btn-info btn-sm ml-3 mr-1">Back</button>
+			</form>
+		</div>
+	</div>
+
+
+</body>
+
+</html>
